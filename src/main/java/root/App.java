@@ -21,6 +21,8 @@ public class App extends Application {
 
         scene = new Scene(loadFXML("Main"), 640, 480);
         stage.setScene(scene);
+        //add stylesheet to stage
+        
         stage.show();
     }
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<VBox alignment="CENTER" maxHeight="30.0" maxWidth="-Infinity" minHeight="20.0" minWidth="-Infinity" prefHeight="27.0" prefWidth="339.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox maxHeight="30.0" minHeight="20.0" prefHeight="27.0">
+         <children>
+            <Rectangle fx:id="priorityTaskColor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="10.0" />
+            <CheckBox fx:id="checkBoxTask" mnemonicParsing="false" prefHeight="27.0" prefWidth="22.0" />
+            <Label fx:id="titleTask" prefHeight="24.0" prefWidth="30.0" text="Title" />
+            <Label fx:id="dateTask" prefHeight="23.0" prefWidth="274.0" text="2/3/2001" textAlignment="RIGHT">
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+   </children>
+</VBox>
