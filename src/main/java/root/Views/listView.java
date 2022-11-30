@@ -4,17 +4,21 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.nio.file.Path;
+
+import javafx.event.Event;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import root.Objects.*;
 public class listView
 {
+    Task task;
     @FXML
     Button addButton;
     @FXML
@@ -24,17 +28,18 @@ public class listView
     @FXML
     VBox taskContainer;
     @FXML
+    void setData(Task tasks){
+        this.task = tasks;
+    }
     private void addTask() throws IOException {
-        Popup popup = new Popup();
-        popup.save.setOnAction(e -> {
-            System.out.println("Adding task");
-            Task task = popup.getTask();
-            task = popup.getTask();
-            System.out.println(task.getTitle());
-            System.out.println(task.getDescription());
-            System.out.println(task.getDate());
-            System.out.println(task.getPriority());
-        });
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("uiFXML/Popup.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+        TextField title = (TextField) scene.lookup("#title");
         
     }
     @FXML

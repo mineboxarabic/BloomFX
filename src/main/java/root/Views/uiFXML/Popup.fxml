@@ -8,8 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="root.Views.PopupController">
    <children>
       <Label text="Title" />
       <TextField fx:id="titleField" />
@@ -19,7 +18,7 @@
       <DatePicker fx:id="datePicker" />
       <Label text="Priority" />
       <ComboBox fx:id="priorityComboBox" prefWidth="150.0" promptText="select Prioity" />
-      <Button fx:id="saveButton" mnemonicParsing="false" text="Save" />
+      <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveTask" text="Save" />
       <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
    </children>
 </VBox>
