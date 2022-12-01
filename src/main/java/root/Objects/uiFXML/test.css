@@ -1,0 +1,6 @@
+#vtests{
+    -fx-background-color: black;
+}
+#vtests:target{
+    -fx-background-color: red;
+}

@@ -41,13 +41,17 @@ public class listView
             taskContainer.getChildren().add(element);
             element.setOnMouseClicked((event) ->{
                 try{
-                    if(focuesedElement != null){
-                        focuesedElement.setStyle("-fx-background-color: white;");
+                    /*for(listViewElement e : elements){
+                        e.setStyle("-fx-background-color: white;");
                     }
                     titleDetail.setText(task.getTitle());
                     descDetail.setText(task.getDescription());
                     focuesedElement = element;
-                    focuesedElement.setStyle("-fx-background-color: gray;");
+                    focuesedElement.setStyle("-fx-background-color: gray;");*/
+                    if(focuesedElement != null){
+                        element.updateElement(focuesedElement, detailContainer.getScene());
+                    }
+                    focuesedElement = element;
                 }
                 catch(Exception e){
                     System.out.println(e);
@@ -59,9 +63,6 @@ public class listView
             System.out.println("Error: " + e);
         }
         
-    }
-    void saveTask(String title, String description, LocalDate date, String time, int priority, String category){
-            //focuesedElement.updateElement(element);
     }
     @FXML
     private void addTask() throws IOException {
