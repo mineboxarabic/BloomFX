@@ -22,6 +22,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("Main"), 640, 480);
         stage.setScene(scene);
         //add stylesheet to stage
+        scene.getStylesheets().add(getClass().getResource("Views/uiFXML/listView.css").toExternalForm());
         
         stage.show();
     }

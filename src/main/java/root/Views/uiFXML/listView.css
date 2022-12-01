@@ -1,0 +1,10 @@
+#listViewElements{
+    
+}
+#listViewElements:focused{
+    -fx-focus-color: black;
+}
+#taskContainer:focus{
+    -fx-focus-color: black;
+    -fx-background-color: black;
+}

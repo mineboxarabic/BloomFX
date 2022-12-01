@@ -23,31 +23,53 @@ public class listViewElement extends VBox{
      boolean status;
      String category;
      int id;
+     Task currenTask;
+     Label titleTask;
+     Label dateTask;
+     Parent root;
+     public Task getTask(){
+         return currenTask;
+     }
+     public void setTask(Task task){
+         currenTask = task;
+     }
+     public void updateElement(listViewElement focuesedElement,Scene newScene){
+            Task task = focuesedElement.getTask();
+            currenTask = task;
+            Parent roote = root;
+            titleTask = (Label) roote.lookup("#titleTask");
+            dateTask = (Label) roote.lookup("#dateTask");
+            titleTask.setText(task.getTitle());
+            dateTask.setText(task.getDate().toString());
+
+            setOnMouseClicked((event) ->extracted(focuesedElement, task, newScene));
+     }
+    private void extracted(listViewElement focuesedElement, Task task, Scene newScene) {
+        try{
+            //get listView.fxml from src/main/resources/root/listView.fxml
+            Scene scene = newScene;
+            Label titleDetail = (Label) scene.lookup("#titleDetail");
+            Label descDetail = (Label) scene.lookup("#descDetail");
+            if(focuesedElement != null){
+                focuesedElement.setStyle("-fx-background-color: white;");
+            }
+            titleDetail.setText(task.getTitle());
+            descDetail.setText(task.getDescription());
+            focuesedElement = this;
+            focuesedElement.setStyle("-fx-background-color: gray;");
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
     public listViewElement(Task task) throws IOException{
-        /*title = task.getTitle();
-        description = task.getDescription();
-        date = task.getDate();
-        priority = task.getPriority();
-        status = false;
-        category = task.getCategory();
-        setMaxHeight(10);
-        HBox hBox = new HBox();
-        hBox.setPrefWidth(500);
-        hBox.setPrefHeight(50);
-        getChildren().add(hBox);
-        hBox.getChildren().add(new CheckBox());
-        hBox.getChildren().add(new Label(title));
-        hBox.getChildren().add(new Label(date.toString()));
-        hBox.getChildren().add(new Label(category));
-        //Create a Horizontal Separator
-        Separator separator = new Separator();
-        getChildren().add(separator);*/
+        currenTask = task;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("uiFXML/listViewElement.fxml"));
-        Parent root = fxmlLoader.load();
+        root = fxmlLoader.load();
         Rectangle priorityTaskColor = (Rectangle) root.lookup("#priorityTaskColor");
         CheckBox checkBoxTask = (CheckBox) root.lookup("#checkBoxTask");
-        Label titleTask = (Label) root.lookup("#titleTask");
-        Label dateTask = (Label) root.lookup("#dateTask");
+        titleTask = (Label) root.lookup("#titleTask");
+        dateTask = (Label) root.lookup("#dateTask");
         setStyle("-fx-Cursor: hand;");
         titleTask.setText(task.getTitle());
         dateTask.setText(task.getDate().toString());
@@ -62,7 +84,7 @@ public class listViewElement extends VBox{
                 priorityTaskColor.setStyle("-fx-fill: #FF0000");
                 break;
         }
-
+        setId("listViewElements");
         getChildren().add(root);
     }
 }
