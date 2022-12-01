@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 public class listViewElement extends VBox{
+    Boolean isSelected;
      String title;
      String description;
      LocalDate date;
@@ -50,9 +51,7 @@ public class listViewElement extends VBox{
             Scene scene = newScene;
             Label titleDetail = (Label) scene.lookup("#titleDetail");
             Label descDetail = (Label) scene.lookup("#descDetail");
-            if(focuesedElement != null){
-                focuesedElement.setStyle("-fx-background-color: white;");
-            }
+            focuesedElement.setStyle("-fx-background-color: white;");
             titleDetail.setText(task.getTitle());
             descDetail.setText(task.getDescription());
             focuesedElement = this;
@@ -68,6 +67,8 @@ public class listViewElement extends VBox{
         root = fxmlLoader.load();
         Rectangle priorityTaskColor = (Rectangle) root.lookup("#priorityTaskColor");
         CheckBox checkBoxTask = (CheckBox) root.lookup("#checkBoxTask");
+        VBox mainVBox = (VBox) root.lookup("#mainVBox");
+
         titleTask = (Label) root.lookup("#titleTask");
         dateTask = (Label) root.lookup("#dateTask");
         setStyle("-fx-Cursor: hand;");
