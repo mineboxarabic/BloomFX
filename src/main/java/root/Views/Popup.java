@@ -30,6 +30,7 @@ public class Popup extends Stage
         
     }
    public Popup (listViewElement element){
+        show();
         Task task = element.getTask();
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("uiFXML/Popup.fxml"));
@@ -57,9 +58,8 @@ public class Popup extends Stage
 
         saveButton.setOnAction((e) ->{
             try{
-                listViewElement newElement = new listViewElement(new Task(titleField.getText(), DescArea.getText(), datePicker.getValue(), "12:00", priorityComboBox.getSelectionModel().getSelectedIndex(), "Work"));
-                //set the scene of the new element to the scene of the old element
-                element.updateElement(newElement,element.getScene());
+                Task newTask = new Task(titleField.getText(), DescArea.getText(), datePicker.getValue(), "12:00", priorityComboBox.getSelectionModel().getSelectedIndex(), "Work");
+                element.updateElement(newTask);
             }
             catch(Exception ex){
                 System.out.println(ex);

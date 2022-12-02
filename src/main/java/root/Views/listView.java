@@ -1,10 +1,15 @@
 package root.Views;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 import java.util.Vector;
 
-import javafx.fxml.*;
 
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -13,10 +18,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import root.Objects.*;
-public class listView
+import org.json.JSONArray;
+import org.json.JSONObject;
+import root.Objects.Task;
+import root.Objects.listViewElement;
+public class listView implements Initializable
 {
-    listViewElement focuesedElement;
+    listViewElement currentElement;
+    listViewElement lastElement;
     Vector<listViewElement> elements = new Vector<listViewElement>();
     @FXML
     Button addButton;
@@ -32,6 +41,11 @@ public class listView
     Label titleDetail;
     @FXML
     Label descDetail;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb){
+        readFile();
+    }
     void addNewTask(Task t)
     {
         try{
@@ -41,17 +55,10 @@ public class listView
             taskContainer.getChildren().add(element);
             element.setOnMouseClicked((event) ->{
                 try{
-                    /*for(listViewElement e : elements){
-                        e.setStyle("-fx-background-color: white;");
-                    }
-                    titleDetail.setText(task.getTitle());
-                    descDetail.setText(task.getDescription());
-                    focuesedElement = element;
-                    focuesedElement.setStyle("-fx-background-color: gray;");*/
-                    if(focuesedElement != null){
-                        element.updateElement(focuesedElement, detailContainer.getScene());
-                    }
-                    focuesedElement = element;
+                    currentElement = element;
+                    currentElement.setLastElement(lastElement);
+                    currentElement.showDetails(task);
+                    lastElement = currentElement;
                 }
                 catch(Exception e){
                     System.out.println(e);
@@ -64,6 +71,47 @@ public class listView
         }
         
     }
+    public String getJson(String url)
+    {
+        String json = "";
+        try{
+            File file = new File(url);
+            FileReader reader = new FileReader(file);
+            int i;
+            while((i = reader.read()) != -1){
+                json += (char)i;
+            }
+            reader.close();
+        }
+        catch(IOException e){
+            System.out.println("Error: " + e);
+        }
+        return json;
+    }
+    void readFile(){
+    //read a json file
+        //read the json file and add the tasks to the list
+        try{
+            String json = getJson("src/main/java/root/Views/save.json");
+            JSONObject obj = new JSONObject(json);
+            JSONArray arr = obj.getJSONArray("Tasks");
+            for(int i = 0; i < arr.length(); i++){
+                JSONObject task = arr.getJSONObject(i);
+                String title = task.getString("title");
+                String desc = task.getString("description");
+                LocalDate date = LocalDate.parse(task.getString("Date")) ;
+                String time = task.getString("Time");
+                int priority = task.getInt("Priority");
+                String category = task.getString("Category");
+                Task t = new Task(title, desc, date, time, priority, category);
+                addNewTask(t);
+            }
+        }
+        catch(Exception e){
+            System.out.println("Error: " + e);
+        }
+        JSONObject obj = new JSONObject();
+    }
     @FXML
     private void addTask() throws IOException {
         
@@ -71,7 +119,6 @@ public class listView
         {
         Popup popup = new Popup();
         Scene scene = popup.getScene();
-
         Button saveButton = (Button) scene.lookup("#saveButton");
         Button cancelButton = (Button) scene.lookup("#cancelButton");
         TextField titleField = (TextField) scene.lookup("#titleField");
@@ -95,15 +142,14 @@ public class listView
     @FXML
     private void removeTask() throws IOException {
         for(int i = 0; i < taskContainer.getChildren().size(); i++){
-            if(taskContainer.getChildren().get(i) == focuesedElement){
+            if(taskContainer.getChildren().get(i) == currentElement){
                 taskContainer.getChildren().remove(i);
             }
         }
     }
     @FXML
     private void editTask() throws Exception {
-        Popup popup = new Popup(focuesedElement);
-        popup.show();
+        Popup popup = new Popup(currentElement);
     }
 
 

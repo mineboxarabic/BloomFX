@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<VBox fx:id="mainVBox" alignment="CENTER" maxHeight="30.0" maxWidth="-Infinity" minHeight="20.0" minWidth="-Infinity" prefHeight="27.0" prefWidth="339.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="mainVBox" alignment="CENTER" maxHeight="30.0" maxWidth="1.7976931348623157E308" minHeight="20.0" prefHeight="27.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox fx:id="listViewElementContainer" maxHeight="30.0" minHeight="20.0" prefHeight="27.0">
          <children>
             <Rectangle fx:id="priorityTaskColor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="10.0" />
             <CheckBox fx:id="checkBoxTask" mnemonicParsing="false" prefHeight="27.0" prefWidth="22.0" />
-            <Label fx:id="titleTask" prefHeight="24.0" prefWidth="30.0" text="Title" />
-            <Label fx:id="dateTask" prefHeight="23.0" prefWidth="274.0" text="2/3/2001" textAlignment="RIGHT">
+            <Label fx:id="titleTask" prefHeight="24.0" prefWidth="155.0" text="Title" />
+            <Label fx:id="dateTask" prefHeight="23.0" prefWidth="160.0" text="2/3/2001" textAlignment="RIGHT">
                <padding>
                   <Insets left="100.0" />
                </padding>

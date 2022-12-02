@@ -16,58 +16,45 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 public class listViewElement extends VBox{
     Boolean isSelected;
-     String title;
-     String description;
-     LocalDate date;
-     String time;
-     int priority;
-     boolean status;
-     String category;
-     int id;
-     Task currenTask;
-     Label titleTask;
-     Label dateTask;
-     Parent root;
+    listViewElement lastElement;
+    Task currenTask;
+    Label titleTask;
+    Label dateTask;
+    Parent root;
+    public void setLastElement(listViewElement element){
+        lastElement = element;
+    }
      public Task getTask(){
          return currenTask;
      }
      public void setTask(Task task){
          currenTask = task;
      }
-     public void updateElement(listViewElement focuesedElement,Scene newScene){
-            Task task = focuesedElement.getTask();
+     public void showDetails(Task task){
+        if(lastElement != null && lastElement != this){
+            lastElement.setStyle("-fx-background-color: #ffffff; -fx-cursor: hand;");
+        }
+        Parent roote = root;
+        Scene scene = roote.getScene();
+        Label titleDetail = (Label) scene.lookup("#titleDetail");
+        Label descDetail = (Label) scene.lookup("#descDetail");
+        titleDetail.setText(task.getTitle());
+        descDetail.setText(task.getDescription());
+        this.setStyle("-fx-background-color: #E0E0E0; -fx-cursor: hand; -fx-border-color: #000000; -fx-font-weight: bold;");
+     }
+     public void updateElement(Task task){
             currenTask = task;
-            Parent roote = root;
-            titleTask = (Label) roote.lookup("#titleTask");
-            dateTask = (Label) roote.lookup("#dateTask");
             titleTask.setText(task.getTitle());
             dateTask.setText(task.getDate().toString());
-
-            setOnMouseClicked((event) ->extracted(focuesedElement, task, newScene));
+            showDetails(task);
+            setOnMouseClicked((event) ->showDetails(task));
      }
-    private void extracted(listViewElement focuesedElement, Task task, Scene newScene) {
-        try{
-            //get listView.fxml from src/main/resources/root/listView.fxml
-            Scene scene = newScene;
-            Label titleDetail = (Label) scene.lookup("#titleDetail");
-            Label descDetail = (Label) scene.lookup("#descDetail");
-            focuesedElement.setStyle("-fx-background-color: white;");
-            titleDetail.setText(task.getTitle());
-            descDetail.setText(task.getDescription());
-            focuesedElement = this;
-            focuesedElement.setStyle("-fx-background-color: gray;");
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }
     public listViewElement(Task task) throws IOException{
         currenTask = task;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("uiFXML/listViewElement.fxml"));
         root = fxmlLoader.load();
         Rectangle priorityTaskColor = (Rectangle) root.lookup("#priorityTaskColor");
         CheckBox checkBoxTask = (CheckBox) root.lookup("#checkBoxTask");
-        VBox mainVBox = (VBox) root.lookup("#mainVBox");
 
         titleTask = (Label) root.lookup("#titleTask");
         dateTask = (Label) root.lookup("#dateTask");
