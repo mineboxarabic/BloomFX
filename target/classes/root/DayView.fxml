@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefWidth="726.0">
+         <children>
+            <VBox prefHeight="152.0" prefWidth="189.0">
+               <children>
+                  <DatePicker prefHeight="61.0" prefWidth="188.0" promptText="fdf" />
+                  <Separator prefHeight="0.0" prefWidth="189.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="200.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <CheckBox mnemonicParsing="false" text="Default" />
+                  <CheckBox mnemonicParsing="false" text="Work" />
+                  <CheckBox mnemonicParsing="false" text="School" />
+                  <CheckBox mnemonicParsing="false" text="Personal" />
+                  <CheckBox mnemonicParsing="false" text="Free Time" />
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
