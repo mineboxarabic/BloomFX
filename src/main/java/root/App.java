@@ -1,11 +1,14 @@
 package root;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-
+import root.Views.dayView;
+import javafx.event.*;
 import java.io.IOException;
 
 
@@ -19,16 +22,17 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        scene = new Scene(loadFXML("Main"), 640, 480);
+        scene = new Scene(loadFXML("Main"), 1100, 480);
         stage.setScene(scene);
-        //add stylesheet to stage
-        //scene.getStylesheets().add(getClass().getResource("Views/uiFXML/listView.css").toExternalForm());
         
         stage.show();
     }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+    }
+    static Scene getScene(){
+        return scene;
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

@@ -1,6 +1,7 @@
 package root.Objects;
 
 import java.time.LocalDate;
+import java.util.Vector;
 
 public class Task 
 {
@@ -10,10 +11,13 @@ public class Task
     private String time;
     private int priority;
     private boolean status;
-    private String category;
+    private Vector<String> categories;
     private int id;
     private static int idCounter = 0;
     //Create getters and setters for all of the above
+    public void onDateUpdate(){
+
+    }
     public String getTitle()
     {
         return title;
@@ -37,6 +41,7 @@ public class Task
     public void setDate(LocalDate date)
     {
         this.date = date;
+        onDateUpdate();
     }
     public String getTime()
     {
@@ -62,13 +67,13 @@ public class Task
     {
         this.status = status;
     }
-    public String getCategory()
+    public Vector<String> getCategory()
     {
-        return category;
+        return categories;
     }
-    public void setCategory(String category)
+    public void setCategory(Vector<String> category)
     {
-        this.category = category;
+        this.categories = category;
     }
     public int getId()
     {
@@ -92,10 +97,10 @@ public class Task
         time = "00:00";
         priority = 0;
         status = false;
-        category = "Default";
+        categories.add("Default");
         this.title = title;
     }
-    public Task(String title, String description, LocalDate date, String time, int priority, String category)
+    public Task(String title, String description, LocalDate date, String time, int priority, Vector<String> category)
     {
         id = this.idGenerator();
         this.title = title;
@@ -104,6 +109,17 @@ public class Task
         this.time = time;
         this.priority = priority;
         this.status = false;
-        this.category = category;
+        this.categories = category;
+    }
+    public Task(String title, String description, LocalDate date, String time, int priority,Boolean statu, Vector<String> category)
+    {
+        id = this.idGenerator();
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.time = time;
+        this.priority = priority;
+        this.status = statu;
+        this.categories = category;
     }
 }

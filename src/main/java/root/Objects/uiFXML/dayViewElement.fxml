@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="mainVBox" alignment="CENTER" maxHeight="95.0" maxWidth="1.7976931348623157E308" minHeight="20.0" prefHeight="39.0" prefWidth="527.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox fx:id="listViewElementContainer" maxHeight="87.0" maxWidth="33333.0" minHeight="20.0" prefHeight="87.0" prefWidth="527.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="priorityTaskColor" mnemonicParsing="false" prefHeight="99999.0" prefWidth="0.0" />
+                  <CheckBox fx:id="checkBoxTask" mnemonicParsing="false" prefHeight="9999.0" prefWidth="28.0" />
+                  <Label fx:id="titleTask" prefHeight="169.0" prefWidth="192.0" text="Title" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox fx:id="buttonsContainer" alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="254.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label fx:id="dateTask" prefHeight="99999.0" prefWidth="92.0" text="2/3/2001" textAlignment="CENTER" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+   </children>
+</VBox>

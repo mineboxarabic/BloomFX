@@ -103,7 +103,9 @@ public class listView implements Initializable
                 String time = task.getString("Time");
                 int priority = task.getInt("Priority");
                 String category = task.getString("Category");
-                Task t = new Task(title, desc, date, time, priority, category);
+                Vector<String> categories = new Vector<String>();
+                categories.add(category);
+                Task t = new Task(title, desc, date, time, priority, categories);
                 addNewTask(t);
             }
         }
@@ -128,7 +130,9 @@ public class listView implements Initializable
         priorityComboBox.getItems().addAll("Low", "Medium", "High");
         
         saveButton.setOnAction((e) ->{
-            addNewTask(new Task(titleField.getText(), DescArea.getText(), datePicker.getValue(), "12:00", priorityComboBox.getSelectionModel().getSelectedIndex(), "Work"));
+            Vector<String> categories = new Vector<String>();
+                categories.add("Default");
+            addNewTask(new Task(titleField.getText(), DescArea.getText(), datePicker.getValue(), "12:00", priorityComboBox.getSelectionModel().getSelectedIndex(), categories));
             popup.close();
         });
         cancelButton.setOnAction((e) ->{

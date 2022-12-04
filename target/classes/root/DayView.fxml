@@ -1,37 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="673.0" prefWidth="1152.0" style="-fx-background-color: white;" stylesheets="@DayView.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="root.Views.dayView">
    <children>
-      <HBox prefWidth="726.0">
+      <HBox fillHeight="false" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="368.0" prefWidth="924.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="152.0" prefWidth="189.0">
-               <children>
-                  <DatePicker prefHeight="61.0" prefWidth="188.0" promptText="fdf" />
-                  <Separator prefHeight="0.0" prefWidth="189.0">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <VBox.margin>
-                        <Insets top="200.0" />
-                     </VBox.margin>
-                  </Separator>
-                  <CheckBox mnemonicParsing="false" text="Default" />
-                  <CheckBox mnemonicParsing="false" text="Work" />
-                  <CheckBox mnemonicParsing="false" text="School" />
-                  <CheckBox mnemonicParsing="false" text="Personal" />
-                  <CheckBox mnemonicParsing="false" text="Free Time" />
-                  <Separator prefWidth="200.0" />
-               </children>
-            </VBox>
+            <SplitPane dividerPositions="0.20707964601769913" prefHeight="10000.0" prefWidth="1132.0" HBox.hgrow="ALWAYS">
+               <items>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="88888.0" prefWidth="498.0">
+                     <children>
+                        <DatePicker prefHeight="61.0" prefWidth="188.0" promptText="Select date" />
+                        <Separator prefHeight="0.0" prefWidth="189.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Separator>
+                        <Accordion VBox.vgrow="ALWAYS">
+                          <panes>
+                            <TitledPane animated="false" text="Categories">
+                                 <content>
+                                    <VBox fx:id="categoriesContainer" prefHeight="88.0" prefWidth="338.0" spacing="10.0">
+                                       <children>
+                                          <CheckBox id="Default" mnemonicParsing="false" text="Default" />
+                                          <CheckBox id="Work" mnemonicParsing="false" text="Work" />
+                                          <CheckBox id="School" mnemonicParsing="false" text="School" />
+                                          <CheckBox id="Personal" mnemonicParsing="false" text="Personal" />
+                                          <CheckBox id="FreeTime" mnemonicParsing="false" text="Free Time" />
+                                       </children>
+                                    </VBox>
+                                 </content>
+                            </TitledPane>
+                          </panes>
+                        </Accordion>
+                        <Separator prefWidth="200.0" />
+                        <Button fx:id="showCompletedButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="118.0" text="Completed">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="showTrashButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Trash">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="saveFileButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="230.0" style="-fx-background-color: lightgreen;" text="Save">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Separator prefWidth="200.0" />
+                     </children>
+                  </VBox>
+                  <SplitPane dividerPositions="0.7642585551330798" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <items>
+                        <VBox maxHeight="1.7976931348623157E308" prefHeight="88888.0" prefWidth="480.0">
+                           <children>
+                              <HBox prefHeight="0.0" prefWidth="679.0">
+                                 <children>
+                                    <TextField fx:id="titleTaskField" maxWidth="1.7976931348623157E308" minWidth="200.0" prefHeight="25.0" prefWidth="518.0" promptText="+ Add task to &quot;Default&quot; on &quot;Today&quot;" />
+                                    <ComboBox fx:id="priorityComboBox" prefHeight="41.0" prefWidth="110.0" promptText="Priority">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></ComboBox>
+                                    <Button fx:id="addTaskButton" mnemonicParsing="false" onAction="#addTask" prefHeight="39.0" prefWidth="49.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                 </children>
+                              </HBox>
+                              <Accordion maxHeight="1.7976931348623157E308" prefHeight="276.0" prefWidth="481.0" VBox.vgrow="ALWAYS">
+                                <panes>
+                                  <TitledPane fx:id="todayPane" contentDisplay="TOP" style="-fx-alignment: white;" text="Today">
+                                       <content>
+                                          <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                             <content>
+                                                <VBox fx:id="taskTodayContainer" maxWidth="1.7976931348623157E308" />
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                  </TitledPane>
+                                  <TitledPane fx:id="tomorrowPane" text="Tomorrow">
+                                       <content>
+                                          <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                             <content>
+                                                <VBox fx:id="taskTomorrowContainer" />
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                  </TitledPane>
+                                  <TitledPane fx:id="thisWeekPane" prefWidth="480.0" text="This week">
+                                       <content>
+                                          <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                             <content>
+                                                <VBox fx:id="taskWeekContainer" />
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                  </TitledPane>
+                                    <TitledPane fx:id="thisWeekPane1" prefWidth="480.0" text="In long time">
+                                       <content>
+                                          <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                             <content>
+                                                <VBox fx:id="longTimeTaskContainer" prefHeight="200.0" />
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                    </TitledPane>
+                                </panes>
+                              </Accordion>
+                           </children>
+                        </VBox>
+                        <VBox maxHeight="1.7976931348623157E308" prefWidth="0.0" style="-fx-background-color: white;">
+                           <children>
+                              <Label fx:id="titleDetail" text="Label">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="descDetail" layoutX="10.0" layoutY="10.0" text="Label" />
+                           </children>
+                        </VBox>
+                     </items>
+                  </SplitPane>
+               </items>
+            </SplitPane>
          </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
       </HBox>
    </children>
 </VBox>

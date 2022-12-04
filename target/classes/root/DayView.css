@@ -1,0 +1,113 @@
+*{
+    -fx-font-family: Arial, Helvetica, sans-serif;
+}
+.titled-pane > .title >.arrow-button {  
+
+
+}
+.titled-pane > .title{
+    -fx-background-color: #5b545400;
+}
+.titled-pane > .title > *.text {
+    -fx-fill: black;
+}
+
+.titled-pane > .content {
+    -fx-background-color: white;
+}
+
+.check-box > .box {
+	-fx-background-color: rgb(237, 237, 237);
+	-fx-border-color: gray;
+	/*-fx-border-radius: 5; */
+}
+#Work > .box{
+    -fx-background-color: rgb(191, 94, 94);
+	-fx-border-color: gray;
+    /*-fx-border-radius: 5; */
+}
+#School > .box {
+    -fx-background-color: lightblue;
+    -fx-border-color: gray;
+    /*-fx-border-radius: 5; */
+}
+#Personal > .box {
+    -fx-background-color: rgb(253, 65, 65);
+    -fx-border-color: gray;
+    /*-fx-border-radius: 5; */
+}
+#FreeTime > .box {
+    -fx-background-color: rgb(124, 211, 124);
+    -fx-border-color: gray;
+    /*-fx-border-radius: 5; */
+}
+#showCompletedButton{
+    -fx-background-image : url("Icons/checkbox1.png");
+    -fx-background-color: transparent;
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+
+
+
+}
+#showTrashButton{
+    -fx-background-image : url("Icons/trash-can.png");
+    -fx-background-color: transparent;
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+}
+
+#titleTaskField{
+    -fx-background-color: rgb(223, 222, 222);
+    -fx-background-radius: 5;
+    -fx-border-color: transparent;
+    -fx-border-radius: 0;
+    -fx-text-fill: black;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-font-family: Arial, Helvetica, sans-serif;
+}
+#showCompletedButton , #showTrashButton{
+    -fx-background-color: transparent;
+}
+#showCompletedButton:hover , #showTrashButton:hover{
+    -fx-background-color: rgb(189, 189, 189);
+}
+#addTaskButton{
+    -fx-background-image : url("Icons/plus.png");
+    -fx-background-color: transparent;
+    -fx-antialiasing: true;
+    -fx-background-size: 40px 40px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+#priorityComboBox{
+    -fx-background-color: transparent;
+    -fx-background-radius: 5;
+    -fx-border-color: transparent;
+    -fx-border-radius: 0;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: Arial, Helvetica, sans-serif;
+}
+
+#priorityComboBox:hover{
+    -fx-background-color: rgb(189, 189, 189);
+}
+#editButton{
+    -fx-background-image : url("Icons/edit.png");
+    -fx-background-color: transparent;
+    -fx-background-size: 40px 40px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+#removeButton{
+    -fx-background-image : url("Icons/trash-bin.png");
+    -fx-background-color: transparent;
+    -fx-background-size: 40px 40px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}

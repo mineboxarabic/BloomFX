@@ -1,6 +1,7 @@
 package root;
 import java.io.IOException;
 import javafx.fxml.*;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 public class Main {
@@ -14,5 +15,13 @@ public class Main {
     @FXML
     private void switchToListView() throws IOException {
         App.setRoot("listView");
+    }
+    @FXML
+    private void switchToDayView() throws IOException {
+        Scene scene = App.getScene();
+        //change width and height of scene
+        scene.getWindow().setWidth(1200);
+        scene.getWindow().setHeight(700);
+        App.setRoot("DayView");
     }
 }
