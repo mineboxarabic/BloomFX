@@ -22,7 +22,7 @@
                   <Font size="35.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="Calender view">
+            <Button mnemonicParsing="false" text="Calender view" onAction="#switchToCalendarView">
                <font>
                   <Font size="35.0" />
                </font></Button>

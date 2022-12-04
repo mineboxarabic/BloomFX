@@ -1,14 +1,10 @@
 package root;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import root.Views.dayView;
-import javafx.event.*;
 import java.io.IOException;
 
 

@@ -11,23 +11,21 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 
 import root.Objects.Task;
-import javafx.beans.InvalidationListener;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
-import javafx.scene.input.KeyEvent;
+
 import javafx.scene.layout.VBox;
 import org.json.*;
-import javafx.event.*;
+
 
 import root.Objects.dayViewElement;
 
@@ -60,6 +58,36 @@ public class dayView implements Initializable
     Button showTrashButton;
     @FXML
     Button saveFileButton;
+    void putInDate(){
+        for(dayViewElement e : elements){
+            try{
+            VBox parent = (VBox) e.getParent();
+            int tomorrow = LocalDate.now().plusDays(1).getDayOfMonth();
+            int today = LocalDate.now().getDayOfMonth();
+            int elementDay = e.getTask().getDate().getDayOfMonth();
+            int nextWeek = LocalDate.now().plusDays(7).getDayOfMonth();
+            if(e.getTask().getDate().getDayOfMonth() == tomorrow){
+                parent.getChildren().remove(e);
+                taskTomorrowContainer.getChildren().add(e);
+            }
+            else if (elementDay > tomorrow && elementDay < nextWeek){
+                parent.getChildren().remove(e);
+                taskWeekContainer.getChildren().add(e);
+            }
+            else if (elementDay > nextWeek){
+                parent.getChildren().remove(e);
+                longTimeTaskContainer.getChildren().add(e);
+            }
+            else if (elementDay == today){
+                parent.getChildren().remove(e);
+                taskTodayContainer.getChildren().add(e);
+            } 
+            }catch(Exception ex){
+                System.out.println(ex);
+            }
+            
+        }
+    }
     public void addTask(Task task){
         try{
             
@@ -76,34 +104,8 @@ public class dayView implements Initializable
             element.dateTask.textProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> ov, String t, String t1) {
-                   for(dayViewElement e : elements){
-                    try{
-                    VBox parent = (VBox) e.getParent();
-                    int tomorrow = LocalDate.now().plusDays(1).getDayOfMonth();
-                    int today = LocalDate.now().getDayOfMonth();
-                    int elementDay = e.getTask().getDate().getDayOfMonth();
-                    int nextWeek = LocalDate.now().plusDays(7).getDayOfMonth();
-                    if(e.getTask().getDate().getDayOfMonth() == tomorrow){
-                        parent.getChildren().remove(e);
-                        taskTomorrowContainer.getChildren().add(e);
-                    }
-                    else if (elementDay > tomorrow && elementDay < nextWeek){
-                        parent.getChildren().remove(e);
-                        taskWeekContainer.getChildren().add(e);
-                    }
-                    else if (elementDay > nextWeek){
-                        parent.getChildren().remove(e);
-                        longTimeTaskContainer.getChildren().add(e);
-                    }
-                    else if (elementDay == today){
-                        parent.getChildren().remove(e);
-                        taskTodayContainer.getChildren().add(e);
-                    } 
-                    }catch(Exception ex){
-                        System.out.println(ex);
-                    }
-                    
-                }
+                    putInDate();
+                   
             }}); 
             element.checkBoxTask.setOnMouseClicked((event) ->{
                 if(element.checkBoxTask.isSelected()){
@@ -144,9 +146,42 @@ public class dayView implements Initializable
         Task task = new Task(titleTaskField.getText(), " ", LocalDate.now(), "12:00", priorityComboBox.getSelectionModel().getSelectedIndex(), categories);
         addTask(task);
     }
+    void sortListByVisiblity(Vector<dayViewElement> list){
+        Vector<dayViewElement> notvisible = new Vector<dayViewElement>();
+        Vector<dayViewElement> visible = new Vector<dayViewElement>();
+        for(int i = 0; i < list.size(); i++){
+            Boolean isVis = list.get(i).isVisible();
+            if(!isVis){
+                notvisible.add(list.get(i));
+            }
+            else{
+                visible.add(list.get(i));
+            }   
+        }
+        list.clear();
+        for(dayViewElement e: visible){
+            list.add(e);
+        }
+        for(dayViewElement e: notvisible){
+            list.add(e);
+        }
+
+
+
+    }
+    void update(){
+        sortListByVisiblity(elements);
+        for(dayViewElement element : elements){
+            VBox parent = (VBox) element.getParent();
+            parent.getChildren().remove(element);
+            parent.getChildren().add(element);
+        }
+        putInDate();
+    }
     public void initialize(URL url, ResourceBundle rb)
     {
         readFile();
+        putInDate();
         saveFileButton.setOnAction(e -> {
             writeFile();
         });
@@ -165,6 +200,9 @@ public class dayView implements Initializable
                                 {
                                     element.setVisible(true);
                                 }
+                                else{
+                                    element.setVisible(false);
+                                }
                                 
                             }
                         }
@@ -179,8 +217,9 @@ public class dayView implements Initializable
                             }
                         }
                         //Sort elements in parent by visibility
-                        
+                        update();
                     });
+                    
                 }
             }
     }

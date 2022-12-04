@@ -1,8 +1,7 @@
 package root.Objects;
 
-import java.io.Console;
+
 import java.io.IOException;
-import java.time.LocalDate;
 
 
 import javafx.fxml.FXMLLoader;
@@ -18,7 +17,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class dayViewElement extends VBox
@@ -33,6 +31,9 @@ public class dayViewElement extends VBox
     public Label titleTask;
     public Label dateTask;
     public CheckBox checkBoxTask;
+    void showFiltered(){
+
+    }
     void showDetails(){
         
         try{
@@ -66,8 +67,7 @@ public class dayViewElement extends VBox
          titleTask = (Label) root.lookup("#titleTask");
         dateTask = (Label) root.lookup("#dateTask");
         //setStyle("-fx-background-color: #ffffff; -fx-cursor: hand;");
-        
-        setPrefWidth(9999);                
+                      
         editButton = new Button();
         removeButton = new Button();
         editButton.setId("editButton");
