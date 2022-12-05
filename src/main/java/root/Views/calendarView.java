@@ -1,5 +1,6 @@
 package root.Views;
 
+import java.io.Console;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,22 +26,24 @@ public class calendarView implements Initializable
     @FXML
     HBox dayContainer;
     public void makeDragable(Node node){
-        node.setOnMousePressed(e -> {
-            isDragging = true;
-            xOffset = e.getSceneX();
-            yOffset = e.getSceneY();
-            node.setCursor(javafx.scene.Cursor.MOVE);
+        node.setOnMousePressed((e) -> {
+            if(e.getButton() == MouseButton.PRIMARY){
+                xOffset = e.getSceneX();
+                yOffset = e.getSceneY();
+                VBox parent = (VBox) node.getParent();
+                parent.getChildren().remove(node);
+                dayContainer.getChildren().add(node);
+                isDragging = true;
+            }
         });
-        node.setOnMouseDragged(e -> {
-            node.setTranslateX(e.getSceneX() - xOffset);
-            node.setTranslateY(e.getSceneY() - yOffset);
-            
+        node.setOnMouseDragged((e) -> {
+            if(e.getButton() == MouseButton.PRIMARY){
+                node.setTranslateX(e.getSceneX() - xOffset);
+                node.setTranslateY(e.getSceneY() - yOffset);
+            }
         });
 
-        node.setOnMouseReleased(e -> {
-            node.setCursor(javafx.scene.Cursor.DEFAULT);
-            isDragging = false;
-        });
+
     }
     @FXML
     Button saveFileButton;
@@ -62,7 +65,27 @@ public class calendarView implements Initializable
             System.out.println( dayContainer.getChildren().size());
             for(Node node : dayContainer.getChildren()){
                 VBox day = (VBox)node;
-                System.out.println("Node is " + day);
+                System.out.println(day.getId());
+                day.setOnMouseEntered((event) ->{
+                    if(isDragging){
+                        day.setStyle("-fx-background-color: gray");
+                    }
+                });
+                day.setOnMouseExited((event) ->{
+                    if(isDragging){
+                        day.setStyle("-fx-background-color: #ffffff; -fx-border-color: #000000");
+                    }
+                });
+                /*day.setOnMouseClicked((event) ->{
+                        if(isDragging){
+                            System.out.println("Clicked");
+                            //isDragging = false;
+                            VBox parent = (VBox)selected.getParent();
+                            parent.getChildren().remove(selected);
+                            day.getChildren().add(selected);
+                            return;
+                        }
+                });*/
 
 
         }}
@@ -81,6 +104,30 @@ public class calendarView implements Initializable
     void addTask(){
         try{
             calendarViewElement element = new calendarViewElement();
+            /*element.setOnMouseClicked((event) ->{
+                if(event.getButton() == MouseButton.PRIMARY){
+                    
+                    try{
+                        if(!isDragging){
+                            selected = element;
+                            isDragging = true;
+                            System.out.println(isDragging);
+                            selected.setStyle("-fx-background-color: #ff0000;");
+                        }
+                        else{
+                            isDragging = false;
+                            selected.setStyle("-fx-background-color: #ffffff;");
+                            selected = null;
+                            System.out.println(isDragging);
+
+                        }
+                    }
+                    catch(Exception e){
+                        System.out.println(e);
+                    }
+                    
+                }
+            });*/
             monDayContainer.getChildren().add(element);
             makeDragable(element);
             selected = element;
