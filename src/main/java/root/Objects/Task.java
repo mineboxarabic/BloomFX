@@ -97,6 +97,7 @@ public class Task
         time = "00:00";
         priority = 0;
         status = false;
+        categories = new Vector<String>();
         categories.add("Default");
         this.title = title;
     }

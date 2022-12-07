@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1448.0" style="-fx-background-color: white;" stylesheets="@DayView.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="root.Views.calendarView">
+<VBox fx:id = "mainContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1448.0" style="-fx-background-color: white;" stylesheets="@DayView.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="root.Views.calendarView">
    <children>
       <HBox fillHeight="false" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="368.0" prefWidth="924.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
          <children>
