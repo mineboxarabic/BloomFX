@@ -19,7 +19,8 @@ import javafx.stage.Popup;
 public class calendarViewElement extends VBox
 {
     public Boolean isDragging = false;
-    public static calendarViewElement selected;
+    Parent root;
+    public static calendarViewElement selected = null;
     public Task currentTask;
     public Button priorityTaskColor;
     public Label titleTask;
@@ -27,81 +28,43 @@ public class calendarViewElement extends VBox
     public CheckBox checkBoxTask;
     
     public calendarViewElement(Task task) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("uiFXML/CalendarViewElement.fxml"));
-
+        isDragging = false;
+        setStyle("-fx-background-color: white;");
         currentTask = task;
-        Parent root = loader.load();
-        try{
-            priorityTaskColor = (Button) root.lookup("#priorityTaskColor");
-            checkBoxTask = (CheckBox) root.lookup("#checkBoxTask");
-            titleTask = (Label) root.lookup("#titleTask");
-            
-            titleTask.setText(currentTask.getTitle());
-        switch(task.getPriority())
-        {
-            case -1:
-                priorityTaskColor.setStyle("-fx-background-color: gray;");
-                break;
-            case 0:
-                priorityTaskColor.setStyle("-fx-background-color: #FF0000");
-                break;
-            case 1:
-                priorityTaskColor.setStyle("-fx-background-color: #FFFF00");
-                break;
-            case 2:
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("uiFXML/CalendarViewElement.fxml"));
+        root = fxmlLoader.load();
+        priorityTaskColor = (Button) root.lookup("#priorityTaskColor");
+        titleTask = (Label) root.lookup("#titleTask");
+        checkBoxTask = (CheckBox) root.lookup("#checkBoxTask");
+        
+        titleTask.setText(currentTask.getTitle());
+        checkBoxTask.setSelected(currentTask.getStatus());
+        switch(priorityTaskColor.getText()){
+            case "Low":
                 priorityTaskColor.setStyle("-fx-background-color: #00FF00");
                 break;
-            
+            case "Medium":
+                priorityTaskColor.setStyle("-fx-background-color: #FFFF00");
+                break;
+            case "High":
+                priorityTaskColor.setStyle("-fx-background-color: #FF0000");
+                break;
         }
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-        
-        
-        getChildren().add(root);
-        setOnMouseClicked((event) ->{
-            if(event.getButton() == MouseButton.PRIMARY){
-                try{
-                    if(!isDragging){
-                        selected = this;
-                        isDragging = true;
-                        selected.setStyle("-fx-background-color: gray;");
-                    }
-                    else{
-                        isDragging = false;
-                        selected.setStyle("-fx-background-color: #ffffff;");
-                        selected = null;
-                    }
+        setOnMouseClicked((e) -> {
+            if(e.getButton() == MouseButton.PRIMARY){
+                if(!isDragging){
+                    isDragging = true;
+                    selected = this;
+                    setStyle("-fx-background-color: gray; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 2px;");
                 }
-                catch(Exception e){
-                    System.out.println(e);
+                else{
+                    isDragging = false;
+                    selected = null;
+                    setStyle("-fx-background-color: #ffffff;");
                 }
-            }
-            else{
-                try{
-                    Popup popup = new Popup();
-                    VBox content = new VBox();
-                    Button close = new Button("Close");
-                    close.setOnAction((e) ->{
-                        popup.hide();
-                    });
-                    content.getChildren().add(close);
-
-                    content.setStyle("-fx-background-color: #ffffff;");
-                    content.setPrefSize(200, 200);
-                    content.getChildren().add(new Label("Hello World"));
-                    popup.getContent().add(content);
-                    popup.show(this, event.getScreenX(), event.getScreenY());
-                }
-                catch(Exception e){
-                    System.out.println(e);
-                }
-                
             }
         });
-
-        
+        this.getChildren().add(root);
 
 
     }

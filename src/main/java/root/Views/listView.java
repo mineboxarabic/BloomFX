@@ -119,7 +119,7 @@ public class listView implements Initializable
         
         try
         {
-        Popup popup = new Popup();
+        Popups popup = new Popups();
         Scene scene = popup.getScene();
         Button saveButton = (Button) scene.lookup("#saveButton");
         Button cancelButton = (Button) scene.lookup("#cancelButton");
@@ -153,7 +153,7 @@ public class listView implements Initializable
     }
     @FXML
     private void editTask() throws Exception {
-        Popup popup = new Popup(currentElement);
+        Popups popup = new Popups(currentElement);
     }
 
 

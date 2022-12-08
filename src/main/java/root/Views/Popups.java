@@ -14,10 +14,10 @@ import javafx.stage.Stage;
 import root.Objects.Task;
 import root.Objects.listViewElement;
 
-public class Popup extends Stage
+public class Popups extends Stage
 {
     Scene scene;
-    public Popup() throws Exception
+    public Popups() throws Exception
     {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("uiFXML/Popup.fxml"));
@@ -31,7 +31,7 @@ public class Popup extends Stage
         }
         
     }
-   public Popup (listViewElement element){
+   public Popups (listViewElement element){
         show();
         Task task = element.getTask();
         try{
