@@ -37,6 +37,7 @@ public class calendarView implements Initializable {
     Boolean isDragging = false;
     double xOffset = 0;
     double yOffset = 0;
+    Vector<calendarViewElement> elements  = new Vector<calendarViewElement>();
     Node dayEvent;
     ContextMenu contextMenu;
     @FXML
@@ -49,7 +50,8 @@ public class calendarView implements Initializable {
     public VBox sunDayContainer;
     @FXML
     public VBox monDayContainer;
-
+    @FXML
+    VBox categoriesContainer;
     void getInfo(VBox theDay) throws IOException {
         Popup popup = new Popup();
         popup.setAutoHide(true);
@@ -88,7 +90,8 @@ public class calendarView implements Initializable {
                 Task task = new Task(title, description, date, "12", priority, categories);
                 addTask(task, theDay);
                 popup.hide();
-            } catch (Exception ex) {
+            } catch (Exception ex) 
+            {
                 System.out.println(ex);
             }
 
@@ -102,6 +105,14 @@ public class calendarView implements Initializable {
         // get the mouse position
         popup.show(theDay.getScene().getWindow());
 
+    }
+    
+    void update(){
+        for(calendarViewElement element : elements){
+            VBox parent = (VBox) element.getParent();
+            parent.getChildren().remove(element);
+            parent.getChildren().add(element);
+        }
     }
 
     @Override
@@ -188,6 +199,48 @@ public class calendarView implements Initializable {
                 
             }
             );
+
+
+            for(Node node : categoriesContainer.getChildren())
+            {
+                if(node instanceof CheckBox)
+                {
+                    CheckBox box = (CheckBox) node;
+                    Vector<String> categories = new Vector<String>();
+                    box.setOnMouseClicked(e -> {
+                        if(box.isSelected())
+                        {
+                            categories.add(box.getText());
+                            
+                            for(calendarViewElement element : elements)
+                            {
+                                for(String category : categories){
+                                if(element.getTask().getCategory().contains(category))
+                                {
+                                    element.setVisible(true);
+                                }
+                                }
+                                
+                                
+                                
+                            }
+                        }
+                        else
+                        {
+                            for(calendarViewElement element : elements)
+                            {
+                                if(element.getTask().getCategory().contains(box.getText()))
+                                {
+                                    element.setVisible(false);
+                                }
+                            }
+                        }
+                        //Sort elements in parent by visibility
+                        update();
+                    });
+                    
+                }
+            }
         }
     }
     catch(Exception e){
@@ -204,6 +257,7 @@ public class calendarView implements Initializable {
             calendarViewElement element = new calendarViewElement(task);
             calendarViewElement.selected = element;
             day.getChildren().add(element);
+            elements.add(element);
 
         } catch (Exception e) {
             System.out.println(e);
