@@ -58,6 +58,8 @@ public class dayView implements Initializable
     Button showTrashButton;
     @FXML
     Button saveFileButton;
+    @FXML
+    VBox pastContainerVBox;
     void putInDate(){
         for(dayViewElement e : elements){
             try{
@@ -81,7 +83,11 @@ public class dayView implements Initializable
             else if (elementDay == today){
                 parent.getChildren().remove(e);
                 taskTodayContainer.getChildren().add(e);
-            } 
+            }
+            else{
+                parent.getChildren().remove(e);
+                pastContainerVBox.getChildren().add(e);
+            }
             }catch(Exception ex){
                 System.out.println(ex);
             }
@@ -246,6 +252,7 @@ public class dayView implements Initializable
         return json;
     }
     void readFile(){
+        putInDate();
         try{
             String json = getJson("src/main/java/root/Saves/save.json");
             JSONObject obj = new JSONObject(json);

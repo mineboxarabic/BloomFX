@@ -87,6 +87,15 @@
                               </HBox>
                               <Accordion maxHeight="1.7976931348623157E308" prefHeight="276.0" prefWidth="481.0" VBox.vgrow="ALWAYS">
                                 <panes>
+                                    <TitledPane contentDisplay="TOP" style="-fx-alignment: white;" text="Past ">
+                                       <content>
+                                          <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                             <content>
+                                                <VBox fx:id="pastContainerVBox" maxWidth="1.7976931348623157E308" />
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                    </TitledPane>
                                   <TitledPane fx:id="todayPane" contentDisplay="TOP" style="-fx-alignment: white;" text="Today">
                                        <content>
                                           <ScrollPane prefHeight="200.0" prefWidth="200.0">
