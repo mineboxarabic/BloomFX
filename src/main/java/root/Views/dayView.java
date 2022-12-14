@@ -191,18 +191,22 @@ public class dayView implements Initializable
                 if(node instanceof CheckBox)
                 {
                     CheckBox box = (CheckBox) node;
+                    Vector<String> categories = new Vector<String>();
                     box.setOnMouseClicked(e -> {
                         if(box.isSelected())
                         {
+                            categories.add(box.getText());
+                            
                             for(dayViewElement element : elements)
                             {
-                                if(element.getTask().getCategory().contains(box.getText()))
+                                for(String category : categories){
+                                if(element.getTask().getCategory().contains(category))
                                 {
                                     element.setVisible(true);
                                 }
-                                else{
-                                    element.setVisible(false);
                                 }
+                                
+                                
                                 
                             }
                         }

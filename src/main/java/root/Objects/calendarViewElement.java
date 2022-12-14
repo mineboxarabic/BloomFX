@@ -85,7 +85,6 @@ public class calendarViewElement extends VBox
             popup.getContent().add(scene.getRoot());
             popup.show(this.getScene().getWindow());
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
