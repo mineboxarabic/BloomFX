@@ -40,7 +40,6 @@ import javafx.event.EventTarget;
 import javafx.fxml.*;
 
 public class calendarView implements Initializable {
-    Vector<calendarViewElement> elements = new Vector<calendarViewElement>();
     Task currentTask;
     Boolean isDragging = false;
     double xOffset = 0;
@@ -68,7 +67,8 @@ public class calendarView implements Initializable {
     VBox friDayContainer;
     @FXML
     VBox saturDayContainer;
-
+    @FXML
+    VBox categoriesContainer;
     void getInfo(VBox theDay) throws IOException {
         Popup popup = new Popup();
         popup.setAutoHide(true);
@@ -216,8 +216,6 @@ public class calendarView implements Initializable {
                 
             }
             );
-
-
             for(Node node : categoriesContainer.getChildren())
             {
                 if(node instanceof CheckBox)
