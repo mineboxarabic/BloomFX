@@ -29,6 +29,9 @@ public class calendarViewElement extends VBox
     public Label dateTask;
     public Label descTask;
     public CheckBox checkBoxTask;
+    public Task getTask(){
+        return currentTask;
+    }
     void taskEdited(){
         Popup popup = new Popup();
         VBox content = new VBox();

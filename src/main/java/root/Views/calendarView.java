@@ -1,11 +1,17 @@
 package root.Views;
 
 import java.io.Console;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.Vector;
+
+import org.json.JSONArray;
 
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -26,6 +32,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Window;
+import org.json.*;
 import root.Objects.*;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -33,6 +40,7 @@ import javafx.event.EventTarget;
 import javafx.fxml.*;
 
 public class calendarView implements Initializable {
+    Vector<calendarViewElement> elements = new Vector<calendarViewElement>();
     Task currentTask;
     Boolean isDragging = false;
     double xOffset = 0;
@@ -49,6 +57,16 @@ public class calendarView implements Initializable {
     public VBox sunDayContainer;
     @FXML
     public VBox monDayContainer;
+    @FXML
+    VBox tuesDayContainer;
+    @FXML
+    VBox wednesDayContainer;
+    @FXML
+    VBox thursDayContainer;
+    @FXML
+    VBox friDayContainer;
+    @FXML
+    VBox saturDayContainer;
 
     void getInfo(VBox theDay) throws IOException {
         Popup popup = new Popup();
@@ -99,13 +117,13 @@ public class calendarView implements Initializable {
         closeButton.setOnMouseClicked(e -> {
             popup.hide();
         });
-        // get the mouse position
         popup.show(theDay.getScene().getWindow());
 
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        readFile();
         try
         {
             for(Node day : dayContainer.getChildren())
@@ -204,6 +222,7 @@ public class calendarView implements Initializable {
             calendarViewElement element = new calendarViewElement(task);
             calendarViewElement.selected = element;
             day.getChildren().add(element);
+            elements.add(element);
 
         } catch (Exception e) {
             System.out.println(e);
@@ -218,5 +237,100 @@ public class calendarView implements Initializable {
         Task task = new Task("test", "test", LocalDate.now(), "fe", 1, false, categories);
         addTask(task, sunDayContainer);
     }
+    public String getJson(String url)
+    {
+        String json = "";
+        try{
+            File file = new File(url);
+            FileReader reader = new FileReader(file);
+            int i;
+            while((i = reader.read()) != -1){
+                json += (char)i;
+            }
+            reader.close();
+        }
+        catch(IOException e){
+            System.out.println("Error: " + e);
+        }
+        return json;
+    }
+    void readFile(){
+        try{
+            String json = getJson("src/main/java/root/Saves/save.json");
+            JSONObject obj = new JSONObject(json);
+            JSONArray arr = obj.getJSONArray("Tasks");
+            
+            for(int i = 0; i < arr.length(); i++){
+                JSONObject task = arr.getJSONObject(i);
+                String title = task.getString("title");
+                String desc = task.getString("description");
+                LocalDate date = LocalDate.parse(task.getString("Date")) ;
+                String time = task.getString("Time");
+                int priority = task.getInt("Priority");
+                JSONArray categoriesArr = task.getJSONArray("Category");
 
+                Vector<String> categories = new Vector<String>();
+                for(int j = 0; j < categoriesArr.length(); j++){
+                    categories.add(categoriesArr.getString(j));
+                }
+                Task t = new Task(title, desc, date, time, priority,categories);
+                if(t.getDate().getDayOfWeek().equals(DayOfWeek.SUNDAY)){
+                    addTask(t, sunDayContainer);
+                }
+                else if(t.getDate().getDayOfWeek().equals(DayOfWeek.MONDAY)){
+                    addTask(t, monDayContainer);
+                }
+                else if(t.getDate().getDayOfWeek().equals(DayOfWeek.TUESDAY)){
+                    addTask(t, tuesDayContainer);
+                }
+                else if(t.getDate().getDayOfWeek().equals(DayOfWeek.WEDNESDAY)){
+                    addTask(t, wednesDayContainer);
+                }
+                else if(t.getDate().getDayOfWeek().equals(DayOfWeek.THURSDAY)){
+                    addTask(t, thursDayContainer);
+                }
+                else if(t.getDate().getDayOfWeek().equals(DayOfWeek.FRIDAY)){
+                    addTask(t, friDayContainer);
+                }
+                else if(t.getDate().getDayOfWeek().equals(DayOfWeek.SATURDAY)){
+                    addTask(t, saturDayContainer);
+                }
+                
+            }
+        }
+        catch(Exception e){
+            System.out.println("Error: " + e);
+        }
+        JSONObject obj = new JSONObject();
+    }
+    void writeFile(){
+        try{
+            JSONObject obj = new JSONObject();
+            JSONArray arr = new JSONArray();
+            JSONArray categories = new JSONArray();
+            for(calendarViewElement element : elements){
+                JSONObject task = new JSONObject();
+                task.put("title", element.getTask().getTitle());
+                task.put("description", element.getTask().getDescription());
+                task.put("Date", element.getTask().getDate().toString());
+                task.put("Time", element.getTask().getTime());
+                task.put("Priority", element.getTask().getPriority());
+                categories = new JSONArray();
+                for(String category : element.getTask().getCategory())
+                {
+                    categories.put(category);
+                }
+                task.put("Category", categories);
+                task.put("Status", element.getTask().getStatus());
+                arr.put(task);
+            }
+            obj.put("Tasks", arr);
+            FileWriter file = new FileWriter("src/main/java/root/Saves/save.json");
+            file.write(obj.toString());
+            file.close();
+        }
+        catch(Exception e){
+            System.out.println("Error: " + e);
+        }
+    }
 }
