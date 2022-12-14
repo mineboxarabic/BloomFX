@@ -1,1 +1,177 @@
-{"Tasks":[{"Status":false,"Category":["Default","School","Default","School"],"Priority":2,"description":" Ce jour je vais allez en cours pour la premier fois de ma vie LET'S GOOOO","Time":"12:00","title":"Allez en cours","Date":"2022-12-04"},{"Status":false,"Category":["Personal"],"Priority":0,"description":" I Need Coffee to start my day","Time":"12:00","title":"Drink coffee","Date":"2022-12-04"},{"Status":false,"Category":["Personal","Free Time"],"Priority":1,"description":" See my friends and ask for my money back.","Time":"12:00","title":"See friends ","Date":"2022-12-04"},{"Status":false,"Category":["School"],"Priority":2,"description":" I have to do my home work.","Time":"12:00","title":"Do my home work!","Date":"2022-12-04"},{"Status":false,"Category":["Personal"],"Priority":0,"description":" ","Time":"12:00","title":"Have breakfast","Date":"2022-12-04"},{"Status":false,"Category":["Default","School"],"Priority":2,"description":" Ce jour je vais allez en cours pour la premier fois de ma vie LET'S GOOOO","Time":"12:00","title":"Allez en cours","Date":"2022-12-05"},{"Status":true,"Category":["Personal"],"Priority":0,"description":" I Need Coffee to start my day","Time":"12:00","title":"Drink coffee","Date":"2022-12-04"},{"Status":true,"Category":["Personal","Free Time"],"Priority":1,"description":" See my friends and ask for my money back.","Time":"12:00","title":"See friends ","Date":"2022-12-04"},{"Status":false,"Category":["School"],"Priority":2,"description":" I have to do my home work.","Time":"12:00","title":"Do my home work!","Date":"2022-12-04"},{"Status":false,"Category":["Personal"],"Priority":0,"description":" ","Time":"12:00","title":"Have breakfast","Date":"2022-12-04"},{"Status":false,"Category":["Default","School"],"Priority":2,"description":" Ce jour je vais allez en cours pour la premier fois de ma vie LET'S GOOOO","Time":"12:00","title":"Allez en cours","Date":"2022-12-05"},{"Status":false,"Category":["Personal"],"Priority":0,"description":" I Need Coffee to start my day","Time":"12:00","title":"Drink coffee","Date":"2022-12-04"},{"Status":false,"Category":["Personal","Free Time"],"Priority":1,"description":" See my friends and ask for my money back.","Time":"12:00","title":"See friends ","Date":"2022-12-04"},{"Status":false,"Category":["School"],"Priority":2,"description":" I have to do my home work.","Time":"12:00","title":"Do my home work!","Date":"2022-12-04"},{"Status":false,"Category":["Personal"],"Priority":0,"description":" ","Time":"12:00","title":"Have breakfast","Date":"2022-12-04"}]}
+{
+    "Tasks": [
+        {
+            "Status": false,
+            "Category": [
+                "Default",
+                "School",
+                "Default",
+                "School"
+            ],
+            "Priority": 2,
+            "description": " Ce jour je vais allez en cours pour la premier fois de ma vie LET'S GOOOO",
+            "Time": "12:00",
+            "title": "Allez en cours",
+            "Date": "2022-12-04"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "Personal"
+            ],
+            "Priority": 0,
+            "description": " I Need Coffee to start my day",
+            "Time": "12:00",
+            "title": "Drink coffee",
+            "Date": "2022-12-04"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "Personal",
+                "Free Time"
+            ],
+            "Priority": 1,
+            "description": " See my friends and ask for my money back.",
+            "Time": "12:00",
+            "title": "See friends ",
+            "Date": "2022-12-04"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "School"
+            ],
+            "Priority": 2,
+            "description": " I have to do my home work.",
+            "Time": "12:00",
+            "title": "Do my home work!",
+            "Date": "2022-12-04"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "Personal"
+            ],
+            "Priority": 0,
+            "description": " ",
+            "Time": "12:00",
+            "title": "Have breakfast",
+            "Date": "2022-12-04"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "Default",
+                "School"
+            ],
+            "Priority": 2,
+            "description": " Ce jour je vais allez en cours pour la premier fois de ma vie LET'S GOOOO",
+            "Time": "12:00",
+            "title": "Allez en cours",
+            "Date": "2022-12-05"
+        },
+        {
+            "Status": true,
+            "Category": [
+                "Personal"
+            ],
+            "Priority": 0,
+            "description": " I Need Coffee to start my day",
+            "Time": "12:00",
+            "title": "Drink coffee",
+            "Date": "2022-12-04"
+        },
+        {
+            "Status": true,
+            "Category": [
+                "Personal",
+                "Free Time"
+            ],
+            "Priority": 1,
+            "description": " See my friends and ask for my money back.",
+            "Time": "12:00",
+            "title": "See friends ",
+            "Date": "2022-12-05"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "School"
+            ],
+            "Priority": 2,
+            "description": " I have to do my home work.",
+            "Time": "12:00",
+            "title": "Do my home work!",
+            "Date": "2022-12-04"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "Personal"
+            ],
+            "Priority": 0,
+            "description": " ",
+            "Time": "12:00",
+            "title": "Have breakfast",
+            "Date": "2022-12-08"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "Default",
+                "School"
+            ],
+            "Priority": 2,
+            "description": " Ce jour je vais allez en cours pour la premier fois de ma vie LET'S GOOOO",
+            "Time": "12:00",
+            "title": "Allez en cours",
+            "Date": "2022-12-09"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "Personal"
+            ],
+            "Priority": 0,
+            "description": " I Need Coffee to start my day",
+            "Time": "12:00",
+            "title": "Drink coffee",
+            "Date": "2022-12-01"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "Personal",
+                "Free Time"
+            ],
+            "Priority": 1,
+            "description": " See my friends and ask for my money back.",
+            "Time": "12:00",
+            "title": "See friends ",
+            "Date": "2022-2-04"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "School"
+            ],
+            "Priority": 2,
+            "description": " I have to do my home work.",
+            "Time": "12:00",
+            "title": "Do my home work!",
+            "Date": "2022-12-04"
+        },
+        {
+            "Status": false,
+            "Category": [
+                "Personal"
+            ],
+            "Priority": 0,
+            "description": " ",
+            "Time": "12:00",
+            "title": "Have breakfast",
+            "Date": "2022-12-04"
+        }
+    ]
+}
