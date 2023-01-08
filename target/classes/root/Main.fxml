@@ -22,14 +22,14 @@
                   <Font size="35.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="Calender view" onAction="#switchToCalendarView">
+            <!--<Button mnemonicParsing="false" text="Calender view" onAction="#switchToCalendarView">
                <font>
                   <Font size="35.0" />
                </font></Button>
             <Button mnemonicParsing="false" text="Time line view">
                <font>
                   <Font size="35.0" />
-               </font></Button>
+               </font></Button>!-->
          </children>
          <opaqueInsets>
             <Insets />

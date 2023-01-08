@@ -92,9 +92,11 @@ public class calendarView implements Initializable {
         saveButton.setOnMouseClicked(e -> {
             try {
                 Vector<String> categories = new Vector<String>();
-                for (Node task : categoriesEdited.getChildren()) {
+                for (Node task : categoriesEdited.getChildren())
+                {
                     CheckBox category = (CheckBox) task;
-                    if (category.isSelected()) {
+                    if (category.isSelected()) 
+                    {
                         categories.add(category.getText());
                     }
                 }
