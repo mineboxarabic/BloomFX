@@ -61,7 +61,7 @@ If you would like to contribute to BloomFX, please fork the repository and submi
 
 ## Author
 
-BloomFX was developed by [Yassin Younes](http://yassin-younes.net/).
+BloomFX was developed by [Yassin Younes](http://yassinyounes.net/).
 
 ## License
 
