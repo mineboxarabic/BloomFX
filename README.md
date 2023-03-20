@@ -13,24 +13,24 @@ BloomFX is a UI Task manager program developed using Java and JavaFX. It allows 
 ## Screenshots
 
 ### Selecting the task view :
-<img src="../master/ScreenShots/Capture.PNG" alt="Screenshot of BloomFX task view" height="100" width="200">
+<img src="https://raw.githubusercontent.com/mineboxarabic/BloomFX/master/ScreenShots/Capture.PNG" alt="Screenshot of BloomFX task view" height="100" width="200">
 
 
 ### List View :
-<img src="../master/ScreenShots/2.PNG" alt="Screenshot of BloomFX list view" height="300" width="500">
+<img src="https://raw.githubusercontent.com/mineboxarabic/BloomFX/master/ScreenShots/2.PNG" alt="Screenshot of BloomFX list view" height="300" width="500">
 
 ##### Adding a new task or editing an existing one :
-<img src="../master/ScreenShots/3.PNG" alt="Screenshot of BloomFX list view" height="200" width="300">
+<img src="https://raw.githubusercontent.com/mineboxarabic/BloomFX/master/ScreenShots/3.PNG" alt="Screenshot of BloomFX list view" height="200" width="300">
 
 
 ### Day View :
-<img src="../master/ScreenShots/4.PNG" alt="Screenshot of BloomFX day view" height="270" width="500">
+<img src="https://raw.githubusercontent.com/mineboxarabic/BloomFX/master/ScreenShots/4.PNG" alt="Screenshot of BloomFX day view" height="270" width="500">
 
 ##### The Completed Tasks section :
-<img src="../master/ScreenShots/6.PNG" alt="Screenshot of BloomFX day view" height="200" width="400">
+<img src="https://raw.githubusercontent.com/mineboxarabic/BloomFX/master/ScreenShots/6.PNG" alt="Screenshot of BloomFX day view" height="200" width="400">
 
 ##### The Trash section :
-<img src="../master/ScreenShots/7.PNG" alt="Screenshot of BloomFX day view" height="200" width="400">
+<img src="https://raw.githubusercontent.com/mineboxarabic/BloomFX/master/ScreenShots/7.PNG" alt="Screenshot of BloomFX day view" height="200" width="400">
 
 ## Installation
 
